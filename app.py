@@ -9,10 +9,8 @@ import matplotlib.dates as mdates
 from matplotlib.dates import MonthLocator
 from functools import partial
 
-# OPCIONAL: Ocultar warnings molestos
 warnings.filterwarnings("ignore")
 
-# Diccionario visual
 nombres_visuales = {
     "AUTOS": "Autos",
     "MOTOS": "Motos",
@@ -30,7 +28,6 @@ nombres_visuales = {
     "TRICICLOS": "Triciclos"
 }
 
-# Lista limpia de vehículos válidos
 vehiculos = list(nombres_visuales.keys())
 
 # Cargar datos
@@ -86,7 +83,6 @@ app_ui = ui.page_fluid(
     ),
     ui.hr(),
 
-    # Indicadores superiores tipo tarjeta
     ui.layout_columns(
         ui.card(
             ui.div(
@@ -148,7 +144,6 @@ app_ui = ui.page_fluid(
     ),
 
     ui.hr(),
-    # Filtros en la izquierda y gráficas en la derecha
     ui.layout_sidebar(
         ui.sidebar(
             ui.h4(ui.strong("Filtros")),
@@ -164,7 +159,6 @@ app_ui = ui.page_fluid(
             width=300
         ),
         ui.row(
-            # Primera fila visual: gráficas
             ui.column(6, 
                 ui.card(
                     ui.h4(ui.strong("Distribución Por Año")),
@@ -179,15 +173,14 @@ app_ui = ui.page_fluid(
                     style="height: auto; min-height: 0;"
                 )
             ),
-            # Segunda fila visual: tabla y estadísticas (pero en las mismas columnas 6 + 6)
             ui.column(6,
                 ui.card(
-                    ui.h4(ui.strong("Tabla Del Año Seleccionado")), # Esto se queda fuera del centrado
+                    ui.h4(ui.strong("Tabla Del Año Seleccionado")),
                     ui.div(
                         ui.output_table("tabla_datos"),
                         style="max-height: 300px; overflow-y: auto; text-align: center;"
                     ),
-                style="height: auto; min-height: 0;"  # Opcional si usas row/column
+                style="height: auto; min-height: 0;" 
                 )
             ),
             ui.column(6,
